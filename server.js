@@ -1,6 +1,8 @@
 const express = require("express");
 
 const app = express();
+// allow the express server serve static files like html in a directory
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, resp)=>{
   resp.send({
