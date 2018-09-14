@@ -9,7 +9,7 @@ let notes =[];
  try {
   notes = JSON.parse(fs.readFileSync('notes.json'));
  } catch (error) {
-   
+   return undefined;
  }
  const duplicateNotes = notes.filter(note=>note.title === title)
  if(duplicateNotes.length === 0) {
@@ -28,9 +28,17 @@ const remove = (title)=>{
   console.log('Removing note', title);
 }
 
+const logNote = (note)=>{
+  console.log('Note:');
+  console.log('------');
+  console.log(`Title: ${note.title}`);
+  console.log(`Body: ${note.body}`);
+}
+
 module.exports = {
   addNote,
   getAll,
   read,
-  remove
+  remove,
+  logNote
 }

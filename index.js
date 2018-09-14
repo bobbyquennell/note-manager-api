@@ -7,7 +7,12 @@ console.log('Yargs',argv);
 console.log(cmd);
 
 if(cmd === 'add'){
-  note.addNote(argv.title, argv.body);
+  var note = note.addNote(argv.title, argv.body);
+  if(note){
+    console.log('Note Created');
+    note.logNote(note);
+
+  }
 } else if (cmd === 'list'){
   note.getAll();
 } else if (cmd ==='read'){
@@ -16,5 +21,5 @@ if(cmd === 'add'){
   note.remove(argv.title);
 }
 else {
-  console.log('unrecognized command');
+  console.log('unrecognized command!');
 }
